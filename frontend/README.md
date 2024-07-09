@@ -25,3 +25,5 @@ criar um arquivo index.css e importar:
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+npm i lucide-react
