@@ -24,3 +24,9 @@ npm i zod -D
 npm i fastify-type-provider-zod -D
 
 npx prisma studio
+
+npm i dayjs -D
+
+npm i nodemailer -D
+
+npm i --save-dev @types/nodemailer -D
