@@ -18,3 +18,9 @@ npm prisma -D
 npx prisma init --datasource-provider SQLite
 
 npx prisma migrate dev -> Sehouver mudanças no banco de dados do prisma e atualiza
+
+npm i zod -D
+
+npm i fastify-type-provider-zod -D
+
+npx prisma studio

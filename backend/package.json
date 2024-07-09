@@ -12,10 +12,13 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.10",
+    "dayjs": "^1.11.11",
     "fastify": "^4.28.1",
+    "fastify-type-provider-zod": "^2.0.0",
     "prisma": "^5.16.1",
     "tsx": "^4.16.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "zod": "^3.23.8"
   },
   "dependencies": {
     "@prisma/client": "^5.16.1"
