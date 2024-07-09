@@ -30,3 +30,5 @@ npm i dayjs -D
 npm i nodemailer -D
 
 npm i --save-dev @types/nodemailer -D
+
+npm i @fastify/cors -D
