@@ -33,3 +33,7 @@ npm install react-router-dom
 npm install localforage match-sorter sort-by
 
 npm i tailwind-variants
+
+Atividades para depois:
+* Componentizar os inputs
+* Componentizar os modais
