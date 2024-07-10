@@ -31,3 +31,5 @@ npm i lucide-react
 npm install react-router-dom
 
 npm install localforage match-sorter sort-by
+
+npm i tailwind-variants
