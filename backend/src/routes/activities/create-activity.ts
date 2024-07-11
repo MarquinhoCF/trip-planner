@@ -1,23 +1,24 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from 'zod';
-import { prisma } from "../lib/prisma";
+import { prisma } from "../../lib/prisma";
+import { dayjs } from "../../lib/dayjs";
 
-export async function createLink(app: FastifyInstance) {
+export async function createActivity(app: FastifyInstance) {
     
-    app.withTypeProvider<ZodTypeProvider>().post('/trips/:tripId/links', {
+    app.withTypeProvider<ZodTypeProvider>().post('/trips/:tripId/activities', {
         schema: {
             params: z.object({
                 tripId: z.string().uuid(),
             }),
             body: z.object({
                 title: z.string().min(4),
-                url: z.string().url(),
+                occurs_at: z.coerce.date(),
             })
         }
     }, async (request) => {
         const { tripId } = request.params;
-        const { title, url } = request.body;
+        const { title, occurs_at } = request.body;
         
         const trip = await prisma.trip.findUnique({
             where: { id: tripId }
@@ -26,15 +27,21 @@ export async function createLink(app: FastifyInstance) {
         if (!trip)
             throw new Error("Trip not found");
 
-        const link = await prisma.link.create({
+        if (dayjs(occurs_at).isBefore(trip.starts_at))
+            throw new Error("Invalid activity date");
+
+        if (dayjs(occurs_at).isAfter(trip.ends_at))
+            throw new Error("Invalid activity date");
+
+        const activity = await prisma.activity.create({
             data: {
                 title,
-                url,
+                occurs_at,
                 trip_id : tripId,
-            },
+            }
         });
 
-        return { linkId: link.id };
+        return { activityId: activity.id };
     });
 
 }
