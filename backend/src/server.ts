@@ -13,6 +13,7 @@ import { updateTrip } from "./routes/trips/update-trip";
 import { getTripDetails } from "./routes/trips/get-trip-details";
 import { getParticipantDetails } from "./routes/participants/get-participant-details";
 import { validatorCompiler, serializerCompiler } from "fastify-type-provider-zod";
+import { errorHandler } from "./error-handler";
 
 const app = fastify();
 
@@ -22,6 +23,8 @@ app.setSerializerCompiler(serializerCompiler);
 app.register(cors, {
     origin: "*",
 });
+
+app.setErrorHandler(errorHandler);
 
 app.register(createTrip);
 app.register(confirmTrip);
