@@ -39,3 +39,7 @@ Atividades para depois:
 * Componentizar os modais
 
 npm install react-day-picker date-fns
+
+npm install axios
+
+npm install react-icons

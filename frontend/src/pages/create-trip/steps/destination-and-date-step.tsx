@@ -9,15 +9,20 @@ interface DestinationAndDateStepProps {
     isGuestsInputOpen: boolean;
     openGuestsInput: () => void;
     closeGuestsInput: () => void;
+    setDestination: (destination: string) => void;
+    eventStartAndEndDates: DateRange | undefined;
+    setEventStartAndEndDates: (dates: DateRange | undefined) => void;
 }
 
 export function DestinationAndDateStep({
     isGuestsInputOpen,
     openGuestsInput,
     closeGuestsInput,
+    setDestination,
+    eventStartAndEndDates,
+    setEventStartAndEndDates,
 }: DestinationAndDateStepProps) {
     const [ isDatePickerOpen, setIsDatePickerOpen ] = useState(false);
-    const [ eventStartAndEndDates, setEventStartAndEndDates ] = useState<DateRange | undefined>(undefined);
 
     function openDatePicker() {
         setIsDatePickerOpen(true);
@@ -27,15 +32,21 @@ export function DestinationAndDateStep({
         setIsDatePickerOpen(false);
     }
 
-    const displayedDate = eventStartAndEndDates && eventStartAndEndDates.from && eventStartAndEndDates.to ?  
-        format(eventStartAndEndDates.from, "d' de 'LLL").concat(' até ').concat(format(eventStartAndEndDates.to, "d' de 'LLL"))
+    const displayedDate = eventStartAndEndDates && eventStartAndEndDates.from && eventStartAndEndDates.to 
+        ?  format(eventStartAndEndDates.from, "d' de 'LLL").concat(' até ').concat(format(eventStartAndEndDates.to, "d' de 'LLL"))
         : null ;
 
     return (
         <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
             <div className='flex items-center gap-2 flex-1'>
                 <MapPin className="size-5 text-zinc-400" />
-                <input disabled={isGuestsInputOpen} type="text" placeholder="Para onde você vai?" className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1" />
+                <input 
+                    disabled={isGuestsInputOpen} 
+                    type="text" 
+                    placeholder="Para onde você vai?" 
+                    className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1" 
+                    onChange={(event) => setDestination(event.target.value)}
+                />
             </div>
 
             <button onClick={openDatePicker} disabled={isGuestsInputOpen} className='flex items-center gap-2 text-left w-[240px]'>

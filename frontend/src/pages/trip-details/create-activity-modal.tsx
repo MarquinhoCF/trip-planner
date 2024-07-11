@@ -24,7 +24,7 @@ export function CreateActivityModal({
                     </p>
                 </div>
 
-                <form className="space-y-3" action="">
+                <form className="space-y-3">
                     <div className='h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2'>
                         <Tag className='text-zinc-400 size-5' />
                         <input 
