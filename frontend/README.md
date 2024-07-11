@@ -37,3 +37,5 @@ npm i tailwind-variants
 Atividades para depois:
 * Componentizar os inputs
 * Componentizar os modais
+
+npm install react-day-picker date-fns
