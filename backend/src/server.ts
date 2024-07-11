@@ -14,6 +14,7 @@ import { getTripDetails } from "./routes/trips/get-trip-details";
 import { getParticipantDetails } from "./routes/participants/get-participant-details";
 import { validatorCompiler, serializerCompiler } from "fastify-type-provider-zod";
 import { errorHandler } from "./error-handler";
+import { env } from "./env";
 
 const app = fastify();
 
@@ -39,6 +40,6 @@ app.register(updateTrip);
 app.register(getTripDetails);
 app.register(getParticipantDetails);
 
-app.listen({port: 3333}).then(() => {
+app.listen({port: env.PORT}).then(() => {
     console.log("Server is running on port 3333");
 });
