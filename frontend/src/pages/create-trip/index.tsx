@@ -57,8 +57,6 @@ export function CreateTripPage() {
 
     const email = data.get('email')?.toString();
 
-    console.log(email);
-
     if (!email) {
       return;
     }
@@ -83,8 +81,6 @@ export function CreateTripPage() {
 
   async function createTrip(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    console.log(destination, ownerName, ownerEmail, eventStartAndEndDates, emailsToInvite);
     
     if (!destination)
       return;
