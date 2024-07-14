@@ -69,7 +69,12 @@ export function DestinationAndDateStep({
                             </div>
                         </div>
 
-                        <DayPicker mode="range" selected={eventStartAndEndDates} onSelect={setEventStartAndEndDates} />
+                        <DayPicker 
+                            mode="range" 
+                            selected={eventStartAndEndDates} 
+                            onSelect={setEventStartAndEndDates} 
+                            disabled={{ before: new Date() }}
+                        />
                     </div>
                 </div>
             )}
